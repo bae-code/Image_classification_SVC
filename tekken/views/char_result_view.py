@@ -21,14 +21,16 @@ def home(result):
         result_list = list(db.compared_face_result.find({},{'_id':False}))
 
         all_result= len(result_list)
-
+        
+        
+        ### 결과값만 저장하는 list
         top_list = []
         for i in result_list:
             name = i['result']
             top_list.append(name)
-
+        ### 리스트에 있는 객체 카운트하면서 최상위부터 순서대로 정렬.
         counts = collections.Counter(top_list)
-
+        ### 카운트한 순서의 .most_common(뽑으려고하는 개수)
         rank = counts.most_common(51)
 
         all_rank = {}
